@@ -7,10 +7,12 @@
 <body>
 <nav th:insert="~{fragments :: nav}"></nav>
     <div class="container">
+
         <div class="row">
             <h1 th:text="${recipe.title}">Recipe Title</h1>
             <p th:text="${recipe.description}">Recipe Description</p>
-            <p>Likes: <span th:text="${recipe.likes}">0</span></p>
+            <p><strong>Kategoria:</strong> <a th:href="@{/recipes(category=${recipe.category.id})}" th:text="${recipe.category.name}"></a></p>
+            <p><strong>Likes: </strong><span th:text="${recipe.likes}">0</span></p>
         </div>
         <div class="row">
             <div class="col-md-auto">
