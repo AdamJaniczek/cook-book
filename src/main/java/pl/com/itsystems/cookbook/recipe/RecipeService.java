@@ -3,6 +3,7 @@ package pl.com.itsystems.cookbook.recipe;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RecipeService {
@@ -12,8 +13,12 @@ public class RecipeService {
         this.recipeRepository = recipeRepository;
     }
 
-    public Iterable<Recipe> getAllRecipes() {
+    public List<Recipe> getAllRecipes() {
         return recipeRepository.findAllByOrderByTitleAsc();
+    }
+
+    public List<Recipe> findByCategory(long id) {
+        return recipeRepository.findAllByCategoryId(id);
     }
 
     public Recipe getRecipeById(Long id) {

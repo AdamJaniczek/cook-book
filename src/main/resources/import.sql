@@ -1,6 +1,7 @@
-INSERT INTO category (name) VALUES ('Śniadanie');
-INSERT INTO category (name) VALUES ('Obiad');
-INSERT INTO category (name) VALUES ('Kolacja');
+INSERT INTO category (id, name) VALUES (0, 'Brak kategorii');
+INSERT INTO category (id, name) VALUES (1, 'Śniadanie');
+INSERT INTO category (id, name) VALUES (2, 'Obiad');
+INSERT INTO category (id, name) VALUES (3, 'Kolacja');
 
 INSERT INTO recipe (title, description, likes) VALUES ('Spaghetti Carbonara', 'A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.', 250);
 INSERT INTO recipe (title, description, likes) VALUES ('Chicken Tikka Masala', 'Grilled chunks of chicken enveloped in a creamy spiced tomato sauce.', 300);

@@ -3,7 +3,12 @@ package pl.com.itsystems.cookbook.recipe;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.com.itsystems.cookbook.category.Category;
 import pl.com.itsystems.cookbook.category.CategoryService;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/recipes")
@@ -17,9 +22,16 @@ public class RecipeController {
     }
 
     @GetMapping
-    public String getAllRecipes(Model model) {
-        Iterable<Recipe> recipes = recipeService.getAllRecipes();
-        model.addAttribute("recipes", recipes);
+    public String getAllRecipes(@RequestParam(required = false) Long category, Model model) {
+        List<Recipe> recipes = new ArrayList<>();
+        model.addAttribute("categories", categoryService.getAllCategories());
+        if (category == null) {
+            recipes = recipeService.getAllRecipes();
+            model.addAttribute("recipes", recipes);
+        } else {
+            recipes = recipeService.findByCategory(category);
+            model.addAttribute("recipes", recipes);
+        }
         return "recipes";
     }
 
@@ -63,7 +75,7 @@ public class RecipeController {
         Recipe recipe = recipeService.getRecipeById(id);
         recipe.likeIt();
         recipeService.saveRecipe(recipe);
-        return "redirect:/";
+        return "redirect:/recipes/" + id;
     }
 
     @PostMapping("/delete/{id}")

@@ -7,11 +7,22 @@
 <body>
 <nav th:insert="~{fragments :: nav}"></nav>
 <div class="container">
-    <h1 class="mt-5">Wszystkie przepisy</h1>
-    <a class="btn btn-primary mt-3 mb-3" href="/recipes/new">Dodaj przepis</a>
+    <div class="row">
+        <h1 class="mt-5">Wszystkie przepisy</h1>
+    </div>
+    <div class="row">
+        <div class="col-auto">
+            <a class="btn btn-primary mt-3 mb-3" href="/recipes/new">Dodaj przepis</a>
+        </div>
+        <div class="col-auto"><a class="btn btn-light mt-3 mb-3" th:href="@{/recipes}">Wszystkie</a></div>
+        <div class="col-auto" th:each="category : ${categories}">
+            <a class="btn btn-light mt-3 mb-3" th:href="@{/recipes(category=${category.id})}" th:text="${category.name}"></a>
+        </div>
+    </div>
     <ul class="list-group">
         <li class="list-group-item" th:each="recipe : ${recipes}">
             <a th:href="@{/recipes/{id}(id=${recipe.id})}" th:text="${recipe.title}"></a>
+            <a th:href="@{/recipes(category=${recipe.category.id})}" th:text="| - ${recipe.category.name}|"></a>
         </li>
     </ul>
 </div>

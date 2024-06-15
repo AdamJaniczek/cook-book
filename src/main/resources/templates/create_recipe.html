@@ -20,7 +20,6 @@
         <div class="mb-3">
             <label>Kategoria: </label>
             <select th:field="*{category.id}" class="form-select">
-                <option value="">Wybierz kategorię</option>
                 <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
             </select>
         </div>
