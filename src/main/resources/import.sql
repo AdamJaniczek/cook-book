@@ -1,7 +1,7 @@
-INSERT INTO category (id, name) VALUES (0, 'Brak kategorii');
-INSERT INTO category (id, name) VALUES (1, 'Śniadanie');
-INSERT INTO category (id, name) VALUES (2, 'Obiad');
-INSERT INTO category (id, name) VALUES (3, 'Kolacja');
+INSERT INTO category (id, name, category_icon) VALUES (0, 'Brak kategorii', 'UNKNOWN');
+INSERT INTO category (id, name, category_icon) VALUES (1, 'Śniadanie', 'BREAKFAST_1');
+INSERT INTO category (id, name, category_icon) VALUES (2, 'Obiad', 'LUNCH_1');
+INSERT INTO category (id, name, category_icon) VALUES (3, 'Kolacja', 'DINNER_1');
 
 INSERT INTO recipe (title, description, likes) VALUES ('Spaghetti Carbonara', 'A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.', 250);
 INSERT INTO recipe (title, description, likes) VALUES ('Chicken Tikka Masala', 'Grilled chunks of chicken enveloped in a creamy spiced tomato sauce.', 300);

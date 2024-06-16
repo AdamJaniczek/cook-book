@@ -17,15 +17,18 @@ public class Category {
 
     @OneToMany(mappedBy = "category")
     private List<Recipe> recipes = new ArrayList<>();
+    @Enumerated(EnumType.STRING)
+    private CategoryIcon categoryIcon;
 
     public Category() {
     }
 
-    public Category(Long id, String name, String description, List<Recipe> recipes) {
+    public Category(Long id, String name, String description, List<Recipe> recipes, CategoryIcon categoryIcon) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.recipes = recipes;
+        this.categoryIcon = categoryIcon;
     }
 
     public Long getId() {
@@ -58,5 +61,13 @@ public class Category {
 
     public void setRecipes(List<Recipe> recipes) {
         this.recipes = recipes;
+    }
+
+    public CategoryIcon getCategoryIcon() {
+        return categoryIcon;
+    }
+
+    public void setCategoryIcon(CategoryIcon categoryIcon) {
+        this.categoryIcon = categoryIcon;
     }
 }

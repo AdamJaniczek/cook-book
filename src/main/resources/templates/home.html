@@ -12,7 +12,7 @@
     <h1 class="mt-5">Top przepisy!</h1>
     <ul class="list-group">
         <li class="list-group-item" th:each="recipe : ${topRecipes}">
-            <a th:href="@{/recipes/{id}(id=${recipe.id})}" th:text="${recipe.title}"></a>
+            <a th:href="@{/recipes/{id}(id=${recipe.id})}" th:text="${recipe.title}" th:title="${recipe.category.name}"></a>
             <span class="badge rounded-pill bg-success" th:text="${recipe.likes}"></span>
         </li>
     </ul>

@@ -22,7 +22,8 @@
     <ul class="list-group">
         <li class="list-group-item" th:each="recipe : ${recipes}">
             <a th:href="@{/recipes/{id}(id=${recipe.id})}" th:text="${recipe.title}"></a>
-            <a th:href="@{/recipes(category=${recipe.category.id})}" th:text="| - ${recipe.category.name}|"></a>
+            <a th:href="@{/recipes(category=${recipe.category.id})}"></a>
+            <span th:title="${recipe.category.name}"><img th:src="@{/img/{fileName}(fileName=${recipe.category.categoryIcon.fileName})}" width="25"></span>
         </li>
     </ul>
 </div>
