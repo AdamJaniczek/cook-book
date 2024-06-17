@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Przepis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+<nav th:insert="~{fragments :: nav}"></nav>
+    <div class="container">
+
+        <div class="row">
+            <h1 th:text="${recipe.title}">Recipe Title</h1>
+            <p th:text="${recipe.description}">Recipe Description</p>
+            <p><strong>Kategoria:</strong> <a th:href="@{/recipes(category=${recipe.category.id})}" th:text="${recipe.category.name}"></a></p>
+            <p><strong>Likes: </strong><span th:text="${recipe.likes}"></span><i class="bi bi-award"></i></p>
+        </div>
+        <div class="row">
+            <div class="col-md-auto">
+                <a class="btn btn-primary me-2" th:href="@{/recipes/edit/{id}(id=${recipe.id})}">Edytuj</a>
+            </div>
+            <div class="col-md-auto">
+                <form method="post" th:action="@{/recipes/{id}/like(id=${recipe.id})}">
+                    <input type="hidden" th:field="${recipe.id}">
+                    <button type="submit" class="btn btn-success">Lubie to!</button>
+                </form>
+            </div>
+            <div class="col-md-auto">
+                <form method="post" th:action="@{/recipes/delete/{id}(id=${recipe.id})}">
+                    <input type="hidden" th:field="${recipe.id}">
+                    <button type="submit" class="btn btn-danger">Usuń</button>
+                </form>
+            </div>
+        </div>
+    </div>
+<footer th:insert="~{fragments :: footer}"></footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
