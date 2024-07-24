@@ -122,3 +122,29 @@ INSERT INTO recipe_category (category_id, recipe_id) VALUES (2, 56);
 INSERT INTO recipe_category (category_id, recipe_id) VALUES (1, 57);
 INSERT INTO recipe_category (category_id, recipe_id) VALUES (3, 58);
 INSERT INTO recipe_category (category_id, recipe_id) VALUES (2, 59);
+
+INSERT INTO user_role (name, description) VALUES ('ADMIN', 'Ma dostęp do wszystkiego');
+INSERT INTO user_role (name, description) VALUES ('USER', 'Dostęp tylko do odczytu');
+
+-- password admin
+INSERT INTO application_user (first_name, last_name, email, password) VALUES ('Jan', 'Kowalski', 'admin@example.com', '{bcrypt}$2a$12$zzMTMTLetws6MQI4Vo1Pw.hBi348lOBZ2H7SevSPczK38/HZgTK7e');
+-- password user
+INSERT INTO application_user (first_name, last_name, email, password) VALUES ('Beata', 'Nowak', 'user@example.com', '{bcrypt}$2a$12$IfQt3YMkj2KlgJzJpStR0.KZudCCW.L96jR9FKg.SNdr/h6DBHlYy');
+-- password: Password123!
+INSERT INTO application_user (first_name, last_name, email, password) VALUES ('Beata', 'Nowakowska', 'nowakowska@example.com', '{bcrypt}$2a$12$qJir5IRMeqe7EzhoqrJDIO5dzg053r/XmbGx1wJw6KbrMomTipSJ6');
+-- password: SecurePass456@
+INSERT INTO application_user (first_name, last_name, email, password) VALUES ('Jan', 'Kowalski', 'jan.kowalski@example.com', '{bcrypt}$2a$12$cIPuYxagOisjAruZJHg5me.0HTdBAdTmhRqJKK6zY7LvpV63CKjH6');
+-- password: MyPassword789#
+INSERT INTO application_user (first_name, last_name, email, password) VALUES ('Anna', 'Wiśniewska', 'anna.wisniewska@example.com', '{bcrypt}$2a$12$K6isD6Ch9gX2WNElXElvgODWV0LaURqZdACmhq7ywK8UMqH.xAT1G');
+-- password: TestPass101$
+INSERT INTO application_user (first_name, last_name, email, password) VALUES ('Marek', 'Lewandowski', 'marek.lewandowski@example.com', '{bcrypt}$2a$12$Rn7iz9Z2QVc2t5HjGtSjweXbsP0dWe87AwG.kx460U99MjLKJidjW');
+-- password: ExamplePass202!
+INSERT INTO application_user (first_name, last_name, email, password) VALUES ('Katarzyna', 'Wójcik', 'katarzyna.wojcik@example.com', '{bcrypt}$2a$12$JePww0AtQBj87HiZumv3auh9xmf7NW9CsaNQ8ItPdcMeluRcoWr3u');
+
+INSERT INTO user_roles (user_id, role_id) VALUES (1, 1);
+INSERT INTO user_roles (user_id, role_id) VALUES (2, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (3, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (4, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (5, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (6, 2);
+INSERT INTO user_roles (user_id, role_id) VALUES (7, 2);
