@@ -16,6 +16,12 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" th:href="@{/}">Strona główna</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/register}">Rejestracja</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" th:href="@{/login}">Zaloguj</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Przepisy
@@ -40,8 +46,6 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
                                 <li><a class="dropdown-item" th:href="@{/user-panel}">Moje konto</a></li>
-                                <li><a class="dropdown-item" th:href="@{/login}">Zaloguj</a></li>
-                                <li><a class="dropdown-item" th:href="@{/register}">Zarejestruj</a></li>
                                 <li><a class="dropdown-item" th:href="@{/logout}">Wyolguj</a></li>
                             </ul>
                         </li>

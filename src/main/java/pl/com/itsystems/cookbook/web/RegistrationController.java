@@ -25,12 +25,6 @@ class RegistrationController {
     @PostMapping("/register")
     String register(UserRegistrationDto userRegistrationDto) {
         userService.register(userRegistrationDto);
-        return "redirect:/register-confirmation";
-    }
-
-    @GetMapping("/register-confirmation")
-    String registrationConfirmation(Model model) {
-        model.addAttribute("message", "Rejestracja użytkownika przebiegła przebiegła pomyślnie");
-        return "message-status";
+        return "redirect:/login";
     }
 }

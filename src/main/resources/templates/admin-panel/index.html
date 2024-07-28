@@ -12,7 +12,9 @@
     <div class="row">
         <div class="col">
             <ul>
-                <li th:each="user : ${users}" th:text="${user.email}">
+                <li th:each="user : ${users}">
+                    <span th:text="${user.email}"></span>
+                    <span><a th:href="@{/admin-panel/edit(userEmail=${user.email})}" th:text="|Edytuj|"></a></span>
                 </li>
             </ul>
         </div>

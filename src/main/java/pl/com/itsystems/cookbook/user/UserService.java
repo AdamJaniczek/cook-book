@@ -11,6 +11,7 @@ import pl.com.itsystems.cookbook.user.dto.UserRegistrationDto;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -86,7 +87,28 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    public void save(User user) {
+    public Set<UserRole> findAllUserRoles() {
+        return userRoleRepository.findAll();
+    }
+
+    public void save(User user, Set<UserRole> userRoles) {
+        user.setRoles(userRoles);
         userRepository.save(user);
+    }
+
+    public void save(User user, String newPassword) {
+        userRepository.findById(user.getId()).ifPresent(
+                u -> {
+                    u.setEmail(user.getEmail());
+                    u.setFirstName(user.getFirstName());
+                    u.setLastName(user.getLastName());
+                    String passwordHash = passwordEncoder.encode(newPassword);
+                    System.out.println("Hasło: " + passwordHash);
+                    //u.setPassword(passwordEncoder.encode(user.getPassword()));
+                    u.setPassword(passwordHash);
+                    userRepository.save(u);
+                    System.out.println(u.toString());
+                }
+        );
     }
 }

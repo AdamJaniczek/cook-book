@@ -2,10 +2,8 @@ package pl.com.itsystems.cookbook.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import pl.com.itsystems.cookbook.user.User;
 import pl.com.itsystems.cookbook.user.UserService;
 
 import java.security.Principal;
@@ -21,9 +19,7 @@ public class UserPanelController {
 
     @GetMapping
     public String userPanel(Model model, Principal principal) {
-        // Optional<UserCredentialsDto> userCredentialsDto = userService.findCredentialsByEmail(authentication.getName());
         String eMail = principal.getName();
-        //Optional<User> user = userService.findByEmail(eMail);
         userService.findByEmail(eMail).ifPresent(
                 user -> model.addAttribute("user", user)
         );
@@ -31,20 +27,9 @@ public class UserPanelController {
     }
 
     @PostMapping
-    public String updateUserPanel(
-            @RequestParam String firstName,
-            @RequestParam String lastName,
-            @RequestParam String email,
-            @RequestParam String password) {
-        userService.findByEmail(email).ifPresent(
-                user -> {
-                    user.setFirstName(firstName);
-                    user.setLastName(lastName);
-                    user.setEmail(email);
-                    user.setPassword(password);
-                    userService.save(user);
-                }
-        );
-        return "redirect:/";
+    public String updateUserPanel(@ModelAttribute("user") User user, String newPassword) {
+        System.out.println("zapis");
+        userService.save(user, newPassword);
+        return "redirect:/user-panel";
     }
 }
